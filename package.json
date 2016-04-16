@@ -1,0 +1,30 @@
+{
+  "name": "reduxerit",
+  "version": "0.1.0",
+  "description": "redux utils to generate reducer and actions in a shorter way",
+  "main": "index.js",
+  "keywords": [
+    "react",
+    "reactjs",
+    "redux",
+    "flux"
+  ],
+  "scripts": {
+    "build:lib": "babel src --out-dir lib",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": {
+    "name": "Jurgo Boemo",
+    "email": "jurgo.boemo@gmail.com",
+    "url": "http://jurgo.me/"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-cli": "^6.7.5",
+    "babel-plugin-transform-es2015-arrow-functions": "^6.5.2",
+    "babel-plugin-transform-es2015-parameters": "^6.7.0",
+    "babel-plugin-transform-es2015-spread": "^6.6.5",
+    "babel-plugin-transform-object-rest-spread": "^6.6.5"
+  }
+}
