@@ -46,9 +46,9 @@ export const utils = {
 
 
 export const set = target => (state, action) =>  (setIn(state,target,action.payload ))
-export const update = (state, action) => (target, updateCB) => (updateIn(state,target, (oldValue) => updateCB(oldValue, action.payload) ))
-export const merge = (state, action) => target => updateIn(state, target, (obj) => ({...obj, ...action.payload})  )
-export const remove = (state) => target => removeIn(state, target)
+export const update = (target, updateCB) => (state, action) => (updateIn(state,target, (oldValue) => updateCB(oldValue, action.payload) ))
+export const merge = target => (state, action) =>  updateIn(state, target, (obj) => ({...obj, ...action.payload})  )
+export const remove = target => (state) =>  removeIn(state, target)
 
 //array
 export const push = (state, action) => target => updateIn(state, target, (arr) => arr.push(action.payload))
