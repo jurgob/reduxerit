@@ -43,6 +43,11 @@ describe('Test utils', () => {
     })
   )
 
+  it('setIn - with target null', () =>
+    setIn(obj, null, {changeAll:"true story bro!"})
+    .should.be.deep.equal({changeAll:"true story bro!"})
+  )
+
   const obj1 = {
     a:"a",
     b:{

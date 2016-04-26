@@ -20,13 +20,18 @@ const removeIn = (o, target, modifier) => {
 
 const updateIn = (o, target, modifier) => {
   let cur;
-  if(typeof target === 'string' )
+  const targetType = typeof target;
+
+  if(targetType !== 'string' && !Array.isArray(target) )
+    return modifier(o)
+
+  if( targetType === 'string' )
     cur = target
   else {
     cur = target.shift()
   }
 
-  if (target.length === 0 ||  typeof target === 'string') {
+  if (target.length === 0 ||  targetType === 'string') {
     return {...o, [cur]: modifier(o[cur])}
   }
   else {
