@@ -51,8 +51,8 @@ export const update = (target, updateCB) => (state, action) => (updateIn(state,t
 export const remove = target => (state) =>  removeIn(state, target)
 
 //array
-export const push = (state, action) => target => updateIn(state, target, (arr) => arr.push(action.payload))
-export const removeIdx = (state, action) => target => updateIn(
+export const push = target => (state, action) => updateIn(state, target, (arr) => arr.concat(action.payload))
+export const removeIdx = target => (state, action) => updateIn(
   state, target,
   arr => {
     const res = [...arr];
