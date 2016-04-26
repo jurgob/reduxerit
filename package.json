@@ -2,7 +2,7 @@
   "name": "reduxerit",
   "version": "0.2.1",
   "description": "redux utils to generate reducer and actions in a shorter way",
-  "main": "index.js",
+  "main": "lib/index.js",
   "keywords": [
     "react",
     "reactjs",
