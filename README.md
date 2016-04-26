@@ -1,8 +1,25 @@
 # reduxerit
-reduxerit is a little library that try to help reducing redux boilerplate
+reduxerit is strongly influenced from redux-modifiers (https://github.com/calvinfroedge/redux-modifiers), It try to semplify writing the redux reducer, but without using immutablejs.
 
-THIS IS STILL A BETA! 
-go here for some more information:
-https://medium.com/@jurgo.boemo/reduxerit-trying-to-reduce-redux-boilerplate-83877191115f#.rsrwfa3a0
+it is intended to work with redux-actions (https://github.com/acdlite/redux-actions) , but it is not mandatory.
 
-If you have any suggestions or if you find out some bug, please open an issue here: https://github.com/jurgob/reduxerit/issues
+###THIS IS STILL A BETA! 
+
+
+###an example
+
+```js
+import { handleActions } from 'redux-actions'
+import { set, removeIdx,push } from 'reduxerit'
+
+const reducerToDoList = handleActions({
+  
+  'SET_TITLE': set('title'),
+  'ADD_ITEM': push('items'),
+  'REMOVE_ITEM': removeIdx('items'),
+}, 
+{
+  title:"",
+  items:[]
+});
+```
