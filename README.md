@@ -10,7 +10,7 @@ it is intended to work with redux-actions (https://github.com/acdlite/redux-acti
 
 ```js
 import { handleActions } from 'redux-actions'
-import { set, removeIdx,push } from 'redux-modifiers'
+import { set, removeIdx,push } from 'reduxerit'
 
 const reducerToDoList = handleActions({
   
