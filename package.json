@@ -1,6 +1,6 @@
 {
   "name": "reduxerit",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "redux utils to generate reducer and actions in a shorter way",
   "main": "lib/index.js",
   "keywords": [
