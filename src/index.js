@@ -1,6 +1,9 @@
 import _deepmerge from 'deepmerge';
 
 const removeIn = (o, target, modifier) => {
+  if(Array.isArray(target))
+    target = [...target]
+    
   let cur;
   if(typeof target === 'string' )
     cur = target
@@ -21,6 +24,9 @@ const removeIn = (o, target, modifier) => {
 }
 
 const updateIn = (o, target, modifier) => {
+  if(Array.isArray(target))
+    target = [...target]
+
   let cur;
   const targetType = typeof target;
 

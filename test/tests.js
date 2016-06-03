@@ -13,6 +13,41 @@ describe('Test reduxit funcs', () => {
     }
   }
 
+  it("set - set('a')", () =>{
+    const action = {
+      type:'TYPE',
+      payload:"new value for a!"
+    }
+
+    set(['a'])(state,action)
+    .should.be.deep.equal({
+      a: "new value for a!",
+      b: {
+        c:4,
+        d: "dd"
+      }
+    })
+
+    set('a')(
+      state,
+      {
+        type:'TYPE',
+        payload:"another value for a!"
+      }
+    )
+    .should.be.deep.equal({
+      a: "another value for a!",
+      b: {
+        c:4,
+        d: "dd"
+      }
+    })
+
+
+
+  })
+
+
   it("set - set(['b','c'])", () =>{
     const action = {
       type:'TYPE',
@@ -40,6 +75,45 @@ describe('Test reduxit funcs', () => {
       "newValue": "changed!"
     })
   })
+
+
+  it("set - nested set", () =>{
+
+    const state = {
+      sideMenu: {
+        expanded: true
+      }
+    }
+
+    const actionSetFalse = {
+      type:'TYPE',
+      payload:false
+    }
+
+    const actionSetTrue = {
+      type:'TYPE',
+      payload:true
+    }
+
+    set(['sideMenu', 'expanded'])(state,actionSetFalse)
+    .should.be.deep.equal({
+      sideMenu: {
+        expanded: false
+      }
+    })
+
+    set(['sideMenu', 'expanded'])(state,actionSetTrue)
+    .should.be.deep.equal({
+      sideMenu: {
+        expanded: true
+      }
+    })
+
+  })
+
+
+
+
 
   /* merge */
   it("merge - merge()", () =>{
