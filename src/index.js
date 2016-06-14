@@ -56,7 +56,17 @@ export const utils = {
 
 
 export const set = target => (state, action) =>  (setIn(state,target,action.payload ))
-export const update = (target, updateCB) => (state, action) => (updateIn(state,target, (oldValue) => updateCB(oldValue, action.payload) ))
+export const update = (target, updateCB) => (state, action) => {
+  let updateFinalCb;
+
+  if( typeof(updateCB) === 'function' )
+    updateFinalCb = (oldValue) => updateCB(oldValue, action.payload)
+  else
+    updateFinalCb = () => updateCB
+
+  return updateIn(state,target, updateFinalCb)
+}
+
 export const deepmerge = target => (state, action) =>  updateIn(state, target, (obj) => _deepmerge(obj, action.payload))
 export const merge = target => (state, action) =>  updateIn(state, target, (obj) => ({...obj, ...action.payload})  )
 export const remove = target => (state) =>  removeIn(state, target)

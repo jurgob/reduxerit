@@ -219,7 +219,7 @@ describe('Test reduxit funcs', () => {
 
 
   /* update */
-  it("update - ", () =>{
+  it("update - update collaback", () =>{
     const action = {
       type:'TYPE',
       payload:5
@@ -235,10 +235,25 @@ describe('Test reduxit funcs', () => {
     })
   })
 
-  it("remove - ", () =>{
+  it("update - set fixed value", () =>{
     const action = {
-      type:'TYPE',
-      payload:5
+      type:'TYPE'
+    }
+
+    update(['b','c'] , 'settedWithoutCallback' )(state,action)
+    .should.be.deep.equal({
+      a: "aa",
+      b: {
+        c:"settedWithoutCallback",
+        d: "dd"
+      }
+    })
+  })
+
+
+  it("remove - remove b.c", () =>{
+    const action = {
+      type:'TYPE'
     }
 
     remove(['b','c'])(state,action)
