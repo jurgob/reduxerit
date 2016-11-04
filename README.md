@@ -34,7 +34,7 @@ import { set, removeIdx,push } from 'reduxerit'
 
 const apiResponse = handleActions({
   'RECEVE_RESPONSE': set()
-})
+}, {})
 
 ```
 now if you raise an action with a payload, you will see the entire apiResponse state equals to the palyload
@@ -54,7 +54,7 @@ const apiResponse = handleActions({
       ...state,
       ...action.payload
    })
-})
+},{})
 ```
 
 why you have to use ```set()``` and not ```set```?
@@ -66,7 +66,7 @@ you have an api witch returns you {data:[],pages:{cur:1, totPages:100} }. Let's 
 const apiResponse = handleActions({
   'RECEVE_RESPONSE': set(),
   'RECEVE_UPDATED_TOT_PAGES':set(['pages', 'totPages'])
-})
+},{})
 
 ```
 let's see the code without reduxerit:
@@ -85,13 +85,29 @@ const apiResponse = handleActions({
        totPages: action.payload
      }
    })
-})
+}, {})
 ```
 
 lot of "boilerplate", right?
 
 
+##when to NOT use reduxerit
 
+redux comes with the ```combineReducers``` function, so you should use it as mutch as you can. as intance, if you need a "loading" status for the api, you should use ```combineReducers``` rather then reduxerit:
+
+```js
+const loading = handleActions({
+  'SEND_REQUST': true  
+  'RECEVE_RESPONSE':false
+}, false)
+
+const api = combineReducers({
+  response:apiResponse,
+  loading
+})  
+
+so don't use reduxerit if you don't need it!
+```
 
 
 
