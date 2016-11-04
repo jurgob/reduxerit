@@ -109,6 +109,28 @@ const api = combineReducers({
 so don't use reduxerit if you don't need it!
 ```
 
+##reduxerit api:
+
+here are the reduxerit api:
+
+reduxerit function (they all return a function like (state, action) => newState  )
+ - set
+ - update
+ - merge
+ - deepmerge
+ - remove
+ - push
+ - removeIdx
+ 
+utils (all the function above are based from those utils functions):
+ - setIn
+ - updateIn
+ - removeIn 
+ 
+ look the tests for more details:
+ https://github.com/jurgob/reduxerit/tree/master/test
+
+
 
 
 
