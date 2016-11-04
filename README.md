@@ -48,17 +48,47 @@ now ```store.getState().apiResponse``` will be ```js  { data:[]}}```
 the reducer without reduxerit would be:
 
 ```js
-  /*WITHOUT REDUXERIT */
-  
-  const apiResponse = handleActions({
+/*WITHOUT REDUXERIT */  
+const apiResponse = handleActions({
   'RECEVE_RESPONSE': (state, action) => ({
       ...state,
       ...action.payload
    })
 })
-
 ```
 
+why you have to use ```set()``` and not ```set```?
+becouse the first argument can be a subpatch of the state you want to modify. Let's do an example:
+
+you have an api witch returns you {data:[],pages:{cur:1, totPages:100} }. Let's say that you have 2 methods in this api, 1 to get the whole response and one to refresh just totPages. With reduxerit you can do it like this:
+
+```js
+const apiResponse = handleActions({
+  'RECEVE_RESPONSE': set(),
+  'RECEVE_UPDATED_TOT_PAGES':set(['pages', 'totPages'])
+})
+
+```
+let's see the code without reduxerit:
+
+```js
+/* WITHOUT REDUXERIT*/
+const apiResponse = handleActions({
+  'RECEVE_RESPONSE': (state, action) => ({
+     ...state,
+     ...action.payload
+   }),
+  'RECEVE_UPDATED_TOT_PAGES':(state, action) => ({
+     ...state,
+     pages:{
+       ...state.pages,
+       totPages: action.payload
+     }
+   })
+})
+```
+
+lot of "boilerplate", right?
 
 
 
