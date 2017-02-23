@@ -18,6 +18,10 @@
     "email": "jurgo.boemo@gmail.com",
     "url": "http://jurgo.me/"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jurgob/reduxerit"
+  },
   "license": "ISC",
   "devDependencies": {
     "babel": "^6.5.2",
